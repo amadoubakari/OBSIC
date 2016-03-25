@@ -56,7 +56,7 @@ class LoginController extends AbstractActionController {
                 $_SESSION['profil'] = $results['profil'];
                // $_SESSION['evenements'] = $results['evenements'];
                 $_SESSION['connected'] = TRUE;
-                return $this->redirect()->toRoute('home');
+                return $this->redirect()->toRoute('produit/default', array('controller'=>'produit', 'action'=>'add'));
             } else {
                 $msg = "Votre login ou mot de passe est incorrect !!!";
                 // return $this->redirect()->toRoute('auth/default', array('controller' => 'login', 'action' => 'login'));

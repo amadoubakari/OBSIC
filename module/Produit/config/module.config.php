@@ -12,7 +12,7 @@ return array(
     //ajouter les contrôleurs
     'controllers' => array(
         'invokables' => array(
-            'Produit\Controller\Produit' => 'Produit\Controller\ProduitController',
+            'Produit\Controller\Produit ' => 'Produit\Controller\ProduitController',
         ),
     ),
     'router' => array(

@@ -38,18 +38,19 @@ return array(
                             ),
                         ),
                     ),
-                    'connexion' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/connexion',
-                            'defaults' => array(
-                                '__NAMESPACE__' => 'Auth\Controller',
-                                'controller' => 'Login',
-                                'action' => 'login',
-                            ),
-                        ),
+                ),
+            ),
+            'login' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/connexion',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Auth\Controller',
+                        'controller' => 'Login',
+                        'action' => 'login',
                     ),
                 ),
+                'may_terminate' => true,
             ),
         ),
     ),

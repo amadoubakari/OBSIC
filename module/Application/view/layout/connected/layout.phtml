@@ -31,8 +31,14 @@
 
     </head>
     <body>
+        <div class="container">
+            <?php echo $this->render('layout/connected/header.phtml'); ?>
+        </div>
         <div class="">
             <?php echo $this->content; ?>
+        </div>
+        <div class="container">
+            <?php echo $this->render('layout/connected/footer.phtml'); ?>
         </div>
         <?php echo $this->inlineScript() ?>
     </body>

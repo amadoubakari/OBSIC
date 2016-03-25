@@ -18,7 +18,11 @@ use Zend\Mvc\Controller\AbstractActionController;
 class ProduitController extends AbstractActionController {
 
     public function addAction() {
-        
+        $this->layout('layout/connected');
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+        }
     }
 
     public function deleteAction() {
