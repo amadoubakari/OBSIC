@@ -50,9 +50,9 @@ class LoginController extends AbstractActionController {
             $rememberMe = $request->getPost('rememberMe');
             $authService = $this->getServiceLocator()->get('authService');
             $results = $authService->authentification($login, $password, $rememberMe);
-            $personnel = $results['personnel'];
+            $personnel = $results['utilisateur'];
             if ($personnel != NULL) {
-                $_SESSION['personnel'] = $personnel;
+                $_SESSION['utilisateur'] = $personnel;
                 $_SESSION['profil'] = $results['profil'];
                // $_SESSION['evenements'] = $results['evenements'];
                 $_SESSION['connected'] = TRUE;

@@ -24,135 +24,85 @@ echo $this->headScript()
         ->prependFile($this->basePath('customer/date/js/bootstrap-select.js'))
 ;
 ?>
-<div>
+<div class="container">
     <div>
         <form class="form-horizontal col-lg-12" method="POST" enctype="multipart/form-data" style="border: 2px solid #CBE6F4;background-color: white">
             <br/>
-            <p class="text-center text-primary" style="font-family: serif; font-size: 14px; font-weight: bold">Informations personnel </p>
-            <hr>
+            <h1 class="text-center text-primary" style="font-family: serif; font-size: 14px; font-weight: bold">Ajouter un nouveau produit </h1>
             <div class="form-group">
-                <label for="service" class="col-sm-3 control-label">En service dans:</label>
                 <div class="col-sm-8">
-                    <select class="form-control col-sm-8" id="service" name="service" title="Service" required="true">
-                        <option value="" style="color: deepskyblue">-- Sélectionner le type de personnel --</option>
-                        <option value="admin" style="color: deepskyblue">&nbsp; Administrateur</option>
-                        <option value="commission" style="color: deepskyblue">&nbsp; Commission</option>
-                        <option value="paroisse" style="color: deepskyblue">&nbsp; Paroisse</option>
+                    <input type="text" name="code" class="form-control" id="nom" value="" title="code" placeholder="code ou série du produit" required="true">
+                </div>
+            </div>
+            <div class="form-group">                
+                <div class="col-sm-8">
+                    <select class="form-control col-sm-8" id="categorie" name="categorie" title="Catégorie du produit">
+                        <option value="" style="color: deepskyblue">-- Sélectionner la catégorie du produit --</option>
+                        <?php
+                        foreach ($categories as $categorie) {
+                            echo '<option value="' . $categorie->getId() . '" style="color: deepskyblue"> &nbsp;' . $categorie->getNom() .' </option>';
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="pays" class="col-sm-3 control-label">Pays:</label>
-                <div class="col-sm-5">
-                    <select class="form-control col-sm-8" id="pays" name="pays" title="Pays" required="true">
-                        <option value="" style="color: deepskyblue">-- Sélectionner votre Pays --</option>
-
+                <div class="col-sm-8">
+                    <input type="text" name="nom" class="form-control" id="nom" value="" title="Nom" placeholder="nom du produit" required="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <select class="form-control col-sm-8" id="marque" name="marque" title="marque">
+                        <option value="" style="color: deepskyblue">-- Sélectionner la marque --</option>
+                        <option value="Masculin" style="color: deepskyblue">&nbsp;Samsung</option>
+                        <option value="Féminin" style="color: deepskyblue">&nbsp;Techno</option>
+                        <option value="Féminin" style="color: deepskyblue">&nbsp;LG</option>
+                        <option value="Féminin" style="color: deepskyblue">&nbsp;HTC</option>
+                        <option value="Féminin" style="color: deepskyblue">&nbsp;VMC</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="nom" class="col-sm-3 control-label">Nom :</label>
-                <div class="col-sm-8">
-                    <input type="text" name="nom" class="form-control" id="nom" value="" title="Nom" placeholder="nom" required="true">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="prenom" class="col-sm-3 control-label">Prénom :</label>
-                <div class="col-sm-8">
-                    <input type="text"  class="form-control" id="prenom" name="prenom" placeholder="prénom" value="" title="Prénom">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="sexe" class="col-sm-3 control-label">Sexe:</label>
-                <div class="col-sm-5">
-                    <select class="form-control col-sm-8" id="sexe" name="sexe" title="Sexe" required="true">
-                        <option value="" style="color: deepskyblue">-- Sélectionner votre sexe --</option>
-                        <option value="Masculin" style="color: deepskyblue">&nbsp;Masculin</option>
-                        <option value="Féminin" style="color: deepskyblue">&nbsp;Féminin</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="dateDeNaissance" class="col-sm-3 control-label">Date de naissance :</label>
-                <div class='input-group date col-lg-7' >
-                    <input type='date' class="form-control"  id='dateDeNaissance' name="dateDeNaissance" value="" placeholder="Date de naissance" style="margin-left: 3px" title="Date de naissance"/>
+                <div class='input-group date col-sm-8' >
+                    <input type='date' class="form-control"  id='dateEnregistrement' name="dateEnregistrement" value="" placeholder="Date d'enregistrement" style="margin-left: 3px" title="Date d'enregistrement"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="lieuDeNaissance" class="col-sm-3 control-label">Lieu de naissance :</label>
-                <div class="col-sm-8">
-                    <input type="text" value="" class="form-control" name="lieuDeNaissance"  id="lieuDeNaissance" placeholder="Lieu de naissance">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="groupeEthnique" class="col-sm-3 control-label">Groupe éthnique :</label>
-                <div class="col-sm-8">
-                    <input type="text"  value="" class="form-control" name="groupeEthnique" id="groupeEthnique" placeholder="groupe éthnique" title="Groupe éthnique">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="langueMaternelle" class="col-sm-3 control-label"> Langue Maternelle :</label>
-                <div class="col-sm-8">
-                    <input type="text" value="" class="form-control" name="langueMaternelle" id="langueMaternelle" placeholder="Langue Maternelle" title="Langue Maternelle">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="domicile" class="col-sm-3 control-label"> Domicile :</label>
-                <div class="col-sm-8">
-                    <input type="text" value="" class="form-control" name="domicile" id="domicile" placeholder="domicile" title="Domicile">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="stPatron" class="col-sm-3 control-label">Saint Patron :</label>
-                <div class='input-group date col-lg-7' >
-                    <input type='date' class="form-control"  id='stPatron' name="stPatron"  placeholder="Date de saint patron" style="margin-left: 3px" title="Date de saint patron"
-                           value=""/>
+                <div class='input-group date col-sm-8' >
+                    <input type='date' class="form-control"  id='dateFabrication' name="dateFabrication" value="" placeholder="Date de fabrication" style="margin-left: 3px" title="Date d'enregistrement"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Adresse email :</label>
-                <div class="col-sm-8">
-                    <input type="text" value=""  class="form-control" name="email" id="email" placeholder="Adresse email" title="Adresse email">
+                <div class='input-group date col-sm-8' >
+                    <input type='date' class="form-control"  id='datePeremption' name="datePeremption" value="" placeholder="Date de péremption" style="margin-left: 3px" title="Date d'enregistrement"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
                 </div>
             </div>
-            <div>
-
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <input type="number"  class="form-control" id="prixAchat" name="prixAchat" placeholder="Prix d'achat(FCFA)" value="" title="Prénom">
+                </div>
             </div>
             <div class="form-group">
-                <label for="telephone" class="col-sm-3 control-label">Téléphone :</label>
                 <div class="col-sm-8">
-                    <input type="text" value="" class="form-control" name="telephone" id="telephone" placeholder="Téléphone" title="Téléphone">
+                    <input type="number"  class="form-control" id="prixAchat" name="prixVente" placeholder="Prix de vente(FCFA)" value="" title="Prénom">
                 </div>
             </div>
             <div class=" form-group">
-                <label for="photo" class="col-sm-3 control-label">Image :</label>
-                <div class="col-sm-8  input-group">
-                    <div class="well span4" style="">
-                        <input type="file" class="span10" name="photo" id="photo" title="Photo">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="dateAdmission" class="col-sm-3 control-label">Date d'admission :</label>
-                <div class='input-group date col-lg-7' >
-                    <input type='datetime' class="form-control"  id='dateAdmission' name="dateAdmission"  title="Date d'admission" placeholder="date d'admission" style="margin-left: 3px"
-                           value=""/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="superieur" class="col-sm-3 control-label">Encadreur :</label>
                 <div class="col-sm-8">
-                    <input type="text" value=""
-                </div>           
+                    <input type="file" name="images[]" multiple>
+                </div>
+            </div>
+            <div class="form-group">                    
                 <div class="row col-sm-offset-2">
                     <hr>
                     <div class="col-sm-2">

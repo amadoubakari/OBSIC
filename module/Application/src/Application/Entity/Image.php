@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Image
  *
- * @ORM\Table(name="image")
+ * @ORM\Table(name="image", indexes={@ORM\Index(name="produit", columns={"produit"})})
  * @ORM\Entity
  */
 class Image
@@ -31,16 +31,19 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", length=65535, nullable=true)
-     */
-    private $description;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="statut", type="string", nullable=false)
      */
     private $statut = '1';
+
+    /**
+     * @var \Application\Entity\Produit
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Produit")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="produit", referencedColumnName="id")
+     * })
+     */
+    private $produit;
 
 
 
@@ -79,30 +82,6 @@ class Image
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Image
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set statut
      *
      * @param string $statut
@@ -124,5 +103,29 @@ class Image
     public function getStatut()
     {
         return $this->statut;
+    }
+
+    /**
+     * Set produit
+     *
+     * @param \Application\Entity\Produit $produit
+     *
+     * @return Image
+     */
+    public function setProduit(\Application\Entity\Produit $produit = null)
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \Application\Entity\Produit
+     */
+    public function getProduit()
+    {
+        return $this->produit;
     }
 }

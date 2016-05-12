@@ -6,15 +6,14 @@
  * and open the template in the editor.
  */
 
+namespace Produit\Service;
+
 /**
  * Description of AbstractService
  *
  * @author AMADOU BAKARI
  */
-
-namespace Auth\Service;
-
-use \Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManager;
 
 abstract class AbstractService {
 

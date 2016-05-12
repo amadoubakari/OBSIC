@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Produit
  *
- * @ORM\Table(name="produit", indexes={@ORM\Index(name="user_idx", columns={"user"}), @ORM\Index(name="prix_idx", columns={"prix_achat"}), @ORM\Index(name="categorie", columns={"categorie"}), @ORM\Index(name="image", columns={"image"})})
+ * @ORM\Table(name="produit", indexes={@ORM\Index(name="user_idx", columns={"user"}), @ORM\Index(name="prix_idx", columns={"prix_achat"}), @ORM\Index(name="categorie", columns={"categorie"})})
  * @ORM\Entity
  */
 class Produit
@@ -103,7 +103,7 @@ class Produit
      *
      * @ORM\Column(name="statut", type="string", nullable=false)
      */
-    private $statut;
+    private $statut = '1';
 
     /**
      * @var \Application\Entity\Categorie
@@ -114,16 +114,6 @@ class Produit
      * })
      */
     private $categorie;
-
-    /**
-     * @var \Application\Entity\Image
-     *
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Image")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="image", referencedColumnName="id")
-     * })
-     */
-    private $image;
 
     /**
      * @var \Application\Entity\User
@@ -457,30 +447,6 @@ class Produit
     public function getCategorie()
     {
         return $this->categorie;
-    }
-
-    /**
-     * Set image
-     *
-     * @param \Application\Entity\Image $image
-     *
-     * @return Produit
-     */
-    public function setImage(\Application\Entity\Image $image = null)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Application\Entity\Image
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**

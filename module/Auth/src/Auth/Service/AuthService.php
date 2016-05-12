@@ -29,7 +29,7 @@ class AuthService extends AbstractService implements IAuthService {
             }
         }
         return array(
-            'personnel' => $personnel,
+            'utilisateur' => $personnel,
             //'evenements' => $evenements,
             'profil' => $profil
         );
